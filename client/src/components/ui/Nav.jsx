@@ -12,8 +12,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SunIcon } from "../assets/SunIcon";
 import { MoonIcon } from "../assets/MoonIcon";
+import { useDark } from "../store/darkStore";
 
-export default function Nav({ isSelected, onValueChange }) {
+export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -24,6 +25,8 @@ export default function Nav({ isSelected, onValueChange }) {
       })
       .catch((err) => console.log(err));
   };
+  const { dark, toggleDark } = useDark();
+
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="sm" justify="start">
@@ -57,9 +60,8 @@ export default function Nav({ isSelected, onValueChange }) {
         </NavbarItem>
         <NavbarItem>
           <Switch
-            isSelected={isSelected}
             color="secondary"
-            onValueChange={onValueChange}
+            onValueChange={toggleDark}
             size="md"
             startContent={<SunIcon />}
             endContent={<MoonIcon />}
@@ -74,7 +76,12 @@ export default function Nav({ isSelected, onValueChange }) {
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link className="w-full " color={"foreground"} to="/display" size="lg">
+          <Link
+            className="w-full "
+            color={"foreground"}
+            to="/display"
+            size="lg"
+          >
             Display
           </Link>
         </NavbarMenuItem>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import Nav from "./components/ui/Nav";
@@ -15,14 +15,13 @@ const App = () => {
     });
   }, []);
 
-  const [isSelected, setSelected] = useState(true);
+
   return (
-    <div class={isSelected && "dark"} >
       <div className="dark:bg-gray-950 dark:text-white ">
-        <Nav isSelected={isSelected} onValueChange={setSelected} />
+        <Nav />
         <Categories />
       </div>
-    </div>
+
   );
 };
 

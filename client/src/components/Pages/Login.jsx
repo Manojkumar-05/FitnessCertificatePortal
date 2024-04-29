@@ -27,7 +27,6 @@ export default function Login() {
   };
 
   return (
-    <div class="dark">
       <div className="flex min-h-[100dvh] items-center justify-center bg-gray-100 px-4 dark:bg-gray-950 dark:text-white">
         <div className="w-full max-w-md space-y-6">
           <div className="space-y-2 text-center">
@@ -81,6 +80,5 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

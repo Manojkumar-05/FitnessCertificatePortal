@@ -47,7 +47,7 @@ const SubmitCertificate = () => {
   };
 
   return (
-    <div class="dark">
+
       <div className="dark:bg-gray-950 dark:text-white ">
         <Nav />
         <form
@@ -84,7 +84,7 @@ const SubmitCertificate = () => {
           </div>
         </form>
       </div>
-    </div>
+  
   );
 };
 
