@@ -18,7 +18,7 @@ const App = () => {
 
   return (
       <div className="dark:bg-gray-950 dark:text-white ">
-        <Nav />
+    
         <Categories />
       </div>
 

@@ -8,7 +8,7 @@ import {
   Switch,
   NavbarItem,
 } from "@nextui-org/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SunIcon } from "../assets/SunIcon";
 import { MoonIcon } from "../assets/MoonIcon";
@@ -28,7 +28,7 @@ export default function Nav() {
   const {  toggleDark } = useDark();
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className="dark:bg-black dark:text-white">
       <NavbarContent className="sm" justify="start">
         <NavbarMenuToggle
           className="landscape:hidden text-[#ab41b5]"
@@ -42,17 +42,21 @@ export default function Nav() {
       </NavbarContent>
       <NavbarContent className="sm:flex gap-4 portrait:hidden" justify="end">
         <NavbarItem className="hover:text-[#ab41b5]">
-          <Link color="foreground" href="#">
+          <NavLink color="foreground" to = "*"
+          className={({isActive}) => (isActive ? "font-semibold text-[#ab41b5]" : "")}
+          >
             Profile
-          </Link>
+          </NavLink>
         </NavbarItem>
         <NavbarItem className="hover:text-[#ab41b5]">
-          <Link color="foreground" to="/display">
+          <NavLink color="foreground" to="/display"
+          className={({isActive}) => (isActive ? "font-semibold text-[#ab41b5]" : "")}
+          >
             Display
-          </Link>
+          </NavLink>
         </NavbarItem>
         <NavbarItem
-          isActive
+          
           onClick={handleLogout}
           className="hover:text-red-600"
         >

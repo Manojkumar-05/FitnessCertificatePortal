@@ -50,8 +50,8 @@ const SubmitCertificate = () => {
   let params = useParams();
 
   return (
-    <div className="dark:bg-gray-950 dark:text-white ">
-      <Nav />
+    <div className="dark:bg-gray-950 dark:text-white">
+  
       <form
         className="flex justify-center flex-col gap-7 dark:bg-black dark:text-white p-20 w-full h-full"
         onSubmit={handleSubmit}

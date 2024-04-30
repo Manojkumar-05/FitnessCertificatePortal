@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
 export const useDark = create((set) => ({
-    dark : false,
+    dark : true,
     toggleDark : () => set((state) => ({dark : !state.dark}))
 }))

@@ -16,8 +16,7 @@ const Display = () => {
 
   return (
     <div className="dark:bg-gray-950 dark:text-white">
-      <Nav />
-      <div className="w-full h-full">Display</div>
+      <div className="w-full h-[100vh]">Display</div>
     </div>
   );
 };
