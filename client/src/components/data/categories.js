@@ -27,8 +27,8 @@ export const categories = [
   { id: 26, CategoryName: "Vedanayagam Auditorium" },
   { id: 27, CategoryName: "Sunflower Block" },
   { id: 28, CategoryName: "Appiled Science Block" },
-  { id: 29, CategoryName: "Appiled Science Block" },
-  { id: 30, CategoryName: "Appiled Science Block" },
-  { id: 31, CategoryName: "Appiled Science Block" },
+  { id: 29, CategoryName: "Main Auditorium" },
+  { id: 30, CategoryName: "Vedanayagam Auditorium" },
+  { id: 31, CategoryName: "Sunflower Block" },
   { id: 32, CategoryName: "Appiled Science Block" },
 ];

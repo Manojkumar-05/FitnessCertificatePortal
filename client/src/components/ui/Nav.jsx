@@ -25,7 +25,7 @@ export default function Nav() {
       })
       .catch((err) => console.log(err));
   };
-  const { dark, toggleDark } = useDark();
+  const {  toggleDark } = useDark();
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
