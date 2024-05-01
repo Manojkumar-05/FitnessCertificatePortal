@@ -9,21 +9,18 @@ import {
   NavbarItem,
 } from "@nextui-org/react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { SunIcon } from "../assets/SunIcon";
 import { MoonIcon } from "../assets/MoonIcon";
 import { useDark } from "../store/darkStore";
+import { useUserActions } from "../store/userStore";
+
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useUserActions()
   const handleLogout = () => {
-    axios
-      .get("http://localhost:3000/auth/logout")
-      .then((res) => {
-        if (res.data.status) navigate("/");
-      })
-      .catch((err) => console.log(err));
+   logout(navigate)
   };
   const {  toggleDark } = useDark();
 
@@ -58,7 +55,7 @@ export default function Nav() {
         <NavbarItem
           
           onClick={handleLogout}
-          className="hover:text-red-600"
+          className="hover:text-red-600 cursor-pointer"
         >
           Logout
         </NavbarItem>

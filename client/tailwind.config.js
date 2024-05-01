@@ -14,6 +14,8 @@ module.exports = {
   theme: {
     fontFamily: {
       Montserrat: ["Montserrat", "sans-serif"],
+      Rajdhani: ["Rajdhani", "sans-serif"],
+      TitilliumWeb: ["TitilliumWeb", "sans-serif"],
     },
     container: {
       center: true,

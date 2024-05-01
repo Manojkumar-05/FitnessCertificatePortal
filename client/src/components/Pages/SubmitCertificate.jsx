@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from "react";
-import Nav from "../ui/Nav";
 import { questions } from "../data/questions";
 import { categories } from "../data/categories";
 import Switch from "../ui/SwitchNew";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Axios from "axios";
 import { Button } from "../ui/button";
+import { useUserActions } from "../store/userStore";
 
 const SubmitCertificate = () => {
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
+  const { fetchUserStatus , submitData} = useUserActions();
+  let {id} = useParams();
 
   useEffect(() => {
-    Axios.get("http://localhost:3000/auth/verify").then((res) => {
-      if (res.data.status) {
-      } else navigate("/");
-    });
+    fetchUserStatus(navigate);
   }, []);
 
-  const trueObj = questions.reduce((acc, { qno }) => {
-    acc[qno] = true;
-    return acc;
-  }, {});
+  // const trueObj = questions.reduce((acc, { qno }) => {
+  //   acc[qno] = true;
+  //   return acc;
+  // }, {});
 
-  const [data, setSwitchStates] = useState(trueObj);
+  // const [data, setSwitchStates] = useState(trueObj);
+
+  const [data, setSwitchStates] = useState();
   const handleSwitchChange = (index) => (isSelected) => {
     setSwitchStates((prevState) => ({
       ...prevState,
@@ -31,33 +30,21 @@ const SubmitCertificate = () => {
     }));
   };
 
-  let id = 1234;
   const handleSubmit = (e) => {
     e.preventDefault();
+    submitData(id, data, navigate);
     // console.log(data);
-    Axios.post("http://localhost:3000/data/submit", { id, data })
-      .then((res) => {
-        console.log(res);
-        if (res.data.status) navigate("/home");
-        // handle success response
-      })
-      .catch((err) => {
-        console.error(err);
-        // handle error response
-      });
   };
 
-  let params = useParams();
 
   return (
     <div className="dark:bg-gray-950 dark:text-white">
-  
       <form
         className="flex justify-center flex-col gap-7 dark:bg-black dark:text-white p-20 w-full h-full"
         onSubmit={handleSubmit}
       >
         <div className="text-2xl ml-[9%] ">
-          {categories[params.id - 1].CategoryName}
+          {categories[id - 1].CategoryName}
         </div>
         {questions.map(({ qno, qn }) => (
           <div key={qno} className="md:ml-32 text-xs md:text-base">

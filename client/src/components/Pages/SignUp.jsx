@@ -2,28 +2,21 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useUserActions } from "../store/userStore";
 
 export default function SignUp() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { signup } = useUserActions();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3000/auth/signup", {
-      userName,
-      email,
-      password,
-    })
-      .then((res) => {
-        if (res.data.status) navigate("/");
-      })
-      .catch((err) => console.log(err));
+    signup(userName, email, password, navigate)
   };
-
+  
   return (
     <div className="flex min-h-[100dvh] items-center justify-center bg-gray-100 px-4 dark:bg-gray-950 dark:text-white">
       <div className="w-full max-w-md space-y-6">
@@ -93,3 +86,13 @@ export default function SignUp() {
     </div>
   );
 }
+
+    // Axios.post("http://localhost:3000/auth/signup", {
+    //   userName,
+    //   email,
+    //   password,
+    // })
+    //   .then((res) => {
+    //     if (res.data.status) navigate("/");
+    //   })
+    //   .catch((err) => console.log(err));

@@ -16,13 +16,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <DarkModeWrapper>
       <BrowserRouter>
         <div className="font-Montserrat">
-            <Nav />
+          <Nav />
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="signup" element={<SignUp />} />
             <Route path="home" element={<App />} />
-            <Route path="/categories/:id" element={<SubmitCertificate />} />
-            <Route path="/display" element={<Display />} />
+            <Route path="categories/:id" element={<SubmitCertificate />} />
+            <Route path="display" element={<Display />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>

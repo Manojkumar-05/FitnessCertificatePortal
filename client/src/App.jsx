@@ -1,28 +1,29 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Axios from "axios";
-import Nav from "./components/ui/Nav";
 import Categories from "./components/ui/Categories";
+import { useUserActions } from "./components/store/userStore";;
 
 const App = () => {
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
-
+  const { fetchUserStatus } = useUserActions();
   useEffect(() => {
-    Axios.get("http://localhost:3000/auth/verify").then((res) => {
-      if (res.data.status) {
-      } else navigate("/");
-    });
+    fetchUserStatus(navigate);
   }, []);
 
-
   return (
-      <div className="dark:bg-gray-950 dark:text-white ">
-    
-        <Categories />
-      </div>
-
+    <div className="dark:bg-gray-950 dark:text-white ">
+      <Categories />
+    </div>
   );
 };
 
 export default App;
+// const navigate = useNavigate();
+// Axios.defaults.withCredentials = true;
+
+//     useEffect(() => {
+//       Axios.get("http://localhost:3000/auth/verify").then((res) => {
+//         if (res.data.status) {
+//         } else navigate("/");
+//       });
+//     }, []);

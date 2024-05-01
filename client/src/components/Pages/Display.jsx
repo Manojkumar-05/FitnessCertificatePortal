@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
-import Nav from "../ui/Nav";
+import { useUserActions } from "../store/userStore";
 import { useNavigate } from "react-router-dom";
-import Axios from "axios";
 
 const Display = () => {
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
-
+  const { fetchUserStatus } = useUserActions();
+  
   useEffect(() => {
-    Axios.get("http://localhost:3000/auth/verify").then((res) => {
-      if (res.data.status) {
-      } else navigate("/");
-    });
+    fetchUserStatus(navigate);
   }, []);
 
   return (
@@ -22,3 +18,7 @@ const Display = () => {
 };
 
 export default Display;
+
+// Instead of using this display we could also try and use
+//  Nested Routes and Index Route to display all the Tables in the submit
+// certificate page itself
