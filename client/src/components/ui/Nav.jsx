@@ -12,20 +12,26 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { SunIcon } from "../assets/SunIcon";
 import { MoonIcon } from "../assets/MoonIcon";
 import { useDark } from "../store/darkStore";
-import { useUserActions } from "../store/userStore";
-
+import useUserStore, { useUserActions } from "../store/userStore";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { logout } = useUserActions()
-  const handleLogout = () => {
-   logout(navigate)
-  };
-  const {  toggleDark } = useDark();
+  const { logout } = useUserActions();
+  const userName = useUserStore((state) => state.userName);
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
 
+  const handleLogout = () => {
+    logout(navigate);
+  };
+  const { toggleDark } = useDark();
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className="dark:bg-black dark:text-white">
+    <Navbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      className="dark:bg-black dark:text-white"
+    >
       <NavbarContent className="sm" justify="start">
         <NavbarMenuToggle
           className="landscape:hidden text-[#ab41b5]"
@@ -39,21 +45,28 @@ export default function Nav() {
       </NavbarContent>
       <NavbarContent className="sm:flex gap-4 portrait:hidden" justify="end">
         <NavbarItem className="hover:text-[#ab41b5]">
-          <NavLink color="foreground" to = "*"
-          className={({isActive}) => (isActive ? "font-semibold text-[#ab41b5]" : "")}
+          <NavLink
+            color="foreground"
+            to="*"
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-[#ab41b5]" : ""
+            }
           >
             Profile
           </NavLink>
         </NavbarItem>
         <NavbarItem className="hover:text-[#ab41b5]">
-          <NavLink color="foreground" to="/display"
-          className={({isActive}) => (isActive ? "font-semibold text-[#ab41b5]" : "")}
+          <NavLink
+            color="foreground"
+            to="/display"
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-[#ab41b5]" : ""
+            }
           >
             Display
           </NavLink>
         </NavbarItem>
         <NavbarItem
-          
           onClick={handleLogout}
           className="hover:text-red-600 cursor-pointer"
         >
@@ -69,6 +82,7 @@ export default function Nav() {
           />
         </NavbarItem>
       </NavbarContent>
+      <div className="">{isLoggedIn && "Logged In"}</div>
 
       <NavbarMenu className="flex gap-11 p-16 items-center">
         <NavbarMenuItem>
