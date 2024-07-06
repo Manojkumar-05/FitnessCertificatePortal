@@ -10,9 +10,9 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use((req, res, next) => {
-  console.log(req.path, res.path); 
+  console.log(req.path, res.path);
   next();
-})
+});
 app.use(
   cors({
     origin: ["http://localhost:5173"],
@@ -28,6 +28,5 @@ mongoose.connect("mongodb://127.0.0.1:27017/authentication");
 // app.get("/", (req, res) => {
 //   res.json({Msg : "What up budd"})
 // })
-
 
 app.listen(process.env.PORT || 3000, () => console.log("Server Is Running"));

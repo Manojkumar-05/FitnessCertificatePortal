@@ -37,14 +37,16 @@ export default function Nav() {
           className="landscape:hidden text-[#ab41b5]"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
-        <Link to={"/home"}>
-          <div className="font-bold text-3xl ml-6">
-            Fitness Certificate Portal
+        <Link to={"home"}>
+          <div className="font-bold text-3xl ml-6 flex justify-center items-center flex-col">
+            <h1 className="text-transparent bg-clip-text bg-gradient-to-r to-fuchsia-600 via-purple-600 from-pink-600 font-bold ">
+              Fitness Certificate Portal
+            </h1>
           </div>
         </Link>
       </NavbarContent>
       <NavbarContent className="sm:flex gap-4 portrait:hidden" justify="end">
-        <NavbarItem className="hover:text-[#ab41b5]">
+        <NavbarItem className="hover:text-[#9f64a4]">
           <NavLink
             color="foreground"
             to="*"
@@ -58,7 +60,7 @@ export default function Nav() {
         <NavbarItem className="hover:text-[#ab41b5]">
           <NavLink
             color="foreground"
-            to="/display"
+            to="display"
             className={({ isActive }) =>
               isActive ? "font-semibold text-[#ab41b5]" : ""
             }
@@ -82,31 +84,21 @@ export default function Nav() {
           />
         </NavbarItem>
       </NavbarContent>
-      <div className="">{isLoggedIn && "Logged In"}</div>
+      {/* <div className="">{isLoggedIn && "Logged In"}</div> */}
 
       <NavbarMenu className="flex gap-11 p-16 items-center">
-        <NavbarMenuItem>
-          <Link className="w-full" color={"foreground"} href="#" size="lg">
-            Profile
-          </Link>
+        <NavbarMenuItem onClick={() => navigate('*')} className="w-full" color={"foreground"} size="lg">
+          Profile
         </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link
-            className="w-full "
-            color={"foreground"}
-            to="/display"
-            size="lg"
-          >
-            Display
-          </Link>
+        <NavbarMenuItem onClick={() => navigate('display')} className="w-full " color={"foreground"} size="lg">
+          Display
         </NavbarMenuItem>
-        <NavbarMenuItem onClick={handleLogout}>
-          <div
-            className="w-full text-red-500 cursor-pointer hover:text-red-700"
-            size="lg"
-          >
-            Logout
-          </div>
+        <NavbarMenuItem
+          onClick={handleLogout}
+          className="w-full text-red-500 cursor-pointer hover:text-red-700"
+          size="lg"
+        >
+          Logout
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserActions } from "../store/userStore";
 
-export default function SignUp() {
+const SignUp = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ export default function SignUp() {
   };
   
   return (
-    <div className="flex min-h-[100dvh] items-center justify-center bg-gray-100 px-4 dark:bg-gray-950 dark:text-white">
+    <div className="flex h-[100dvh] items-center justify-center bg-gray-100 p-4 dark:bg-gray-950 dark:text-white">
       <div className="w-full max-w-md space-y-6">
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-bold">
@@ -68,14 +68,14 @@ export default function SignUp() {
             </div>
 
             <Button
-              className="w-full dark:bg-[#fffa47] dark:hover:bg-[#c9c785]"
+              className="w-full dark:bg-fuchsia-500 dark:hover:bg-fuchsia-700"
               type="submit"
             >
               Sign Up
             </Button>
 
             <Link to={"/"}>
-              <Button className="w-full mt-5 dark:bg-[#fffa47] dark:hover:bg-[#c9c785]">
+              <Button className="w-full mt-5 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-700">
                 Login
               </Button>
             </Link>
@@ -87,6 +87,7 @@ export default function SignUp() {
   );
 }
 
+export {SignUp}
     // Axios.post("http://localhost:3000/auth/signup", {
     //   userName,
     //   email,

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@fontsource/montserrat": "^5.0.18",
+    "@nextui-org/react": "^2.4.2"
+  }
+}

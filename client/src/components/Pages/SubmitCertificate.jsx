@@ -8,19 +8,12 @@ import { useUserActions } from "../store/userStore";
 
 const SubmitCertificate = () => {
   const navigate = useNavigate();
-  const { fetchUserStatus , submitData} = useUserActions();
-  let {id} = useParams();
+  const { fetchUserStatus, submitData } = useUserActions();
+  let { id } = useParams();
 
   useEffect(() => {
     fetchUserStatus(navigate);
   }, []);
-
-  // const trueObj = questions.reduce((acc, { qno }) => {
-  //   acc[qno] = true;
-  //   return acc;
-  // }, {});
-
-  // const [data, setSwitchStates] = useState(trueObj);
 
   const [data, setSwitchStates] = useState();
   const handleSwitchChange = (index) => (isSelected) => {
@@ -32,10 +25,9 @@ const SubmitCertificate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitData(id, data, navigate);
+    submitData(id, data, navigate)
     // console.log(data);
   };
-
 
   return (
     <div className="dark:bg-gray-950 dark:text-white">
@@ -45,6 +37,7 @@ const SubmitCertificate = () => {
       >
         <div className="text-2xl ml-[9%] ">
           {categories[id - 1].CategoryName}
+          <div className="float-end md:mr-28">Select</div>
         </div>
         {questions.map(({ qno, qn }) => (
           <div key={qno} className="md:ml-32 text-xs md:text-base">
@@ -56,7 +49,6 @@ const SubmitCertificate = () => {
                 onValueChange={handleSwitchChange(qno)}
                 color="success"
                 defaultSelected="true"
-                size="sm"
               />
             </span>
           </div>
@@ -79,4 +71,10 @@ const SubmitCertificate = () => {
   );
 };
 
-export default SubmitCertificate;
+export { SubmitCertificate };
+// const trueObj = questions.reduce((acc, { qno }) => {
+//   acc[qno] = true;
+//   return acc;
+// }, {});
+
+// const [data, setSwitchStates] = useState(trueObj);
