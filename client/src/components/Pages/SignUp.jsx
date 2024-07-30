@@ -1,5 +1,5 @@
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Input } from "@nextui-org/react" ;
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,9 +40,10 @@ const SignUp = () => {
                 required
                 type="text"
                 onChange={(e) => setUserName(e.target.value)}
+                variant={"underlined"}
+                color="secondary"
               />
             </div>
-
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -52,6 +53,8 @@ const SignUp = () => {
                 required
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
+                variant={"underlined"}
+                color="secondary"
               />
             </div>
 
@@ -64,6 +67,8 @@ const SignUp = () => {
                 placeholde="********"
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
+                variant={"underlined"}
+                color="secondary"
               />
             </div>
 

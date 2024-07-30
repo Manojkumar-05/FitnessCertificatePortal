@@ -1,5 +1,5 @@
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Input } from "@nextui-org/react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -46,6 +46,8 @@ const Login = () => {
                   required
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
+                  variant={"underlined"}
+                  color="secondary"
                 />
               </div>
 
@@ -58,6 +60,8 @@ const Login = () => {
                   required
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
+                  variant={"underlined"}
+                  color="secondary"
                 />
               </div>
               {!isLoading && (
@@ -82,6 +86,6 @@ const Login = () => {
       </div>
     </>
   );
-}
+};
 
-export {Login}
+export { Login };
