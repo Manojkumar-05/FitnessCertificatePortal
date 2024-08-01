@@ -25,7 +25,7 @@ const useUserStore = create((set, get) => ({
             email: email,
             password: password,
           });
-          toast.success("Account Created Successfully!"); // trigger the notification
+          toast.success("Account Created Successfully!");
           navigate("/");
         } else toast.error("Error : Invalid Credentials!"); // trigger an error notification
       } catch (error) {
@@ -74,7 +74,7 @@ const useUserStore = create((set, get) => ({
     submitData: (id, data, navigate) => {
       const { email } = get();
       console.log(email);
-      Axios.post("http://localhost:3000/data/submit", { id, data, email})
+      Axios.post("http://localhost:3000/data/submit", { id, data, email })
         .then((res) => {
           console.log(res);
           if (res.data.status) navigate("/home");

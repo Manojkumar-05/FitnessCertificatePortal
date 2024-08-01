@@ -15,7 +15,8 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "http://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "GET"],
     credentials: true,
   })
 );

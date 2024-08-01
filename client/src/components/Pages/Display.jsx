@@ -1,5 +1,5 @@
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
-import { Table1, Table2, Table3 } from "./Tables";
+import { Table1, Table2, Table3 } from "../ui/Tables";
 import React, { useEffect } from "react";
 import useUserStore, { useUserActions } from "../store/userStore";
 import { useNavigate } from "react-router-dom";

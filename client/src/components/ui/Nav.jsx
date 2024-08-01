@@ -13,6 +13,7 @@ import { SunIcon } from "../assets/SunIcon";
 import { MoonIcon } from "../assets/MoonIcon";
 import { useDark } from "../store/darkStore";
 import useUserStore, { useUserActions } from "../store/userStore";
+import { Divide as Hamburger } from "hamburger-react";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function Nav() {
     >
       <NavbarContent className="sm" justify="start">
         <NavbarMenuToggle
-          className="landscape:hidden text-[#ab41b5]"
+          className=" text-[#ab41b5]"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
         <Link to={"home"}>
@@ -87,10 +88,10 @@ export default function Nav() {
       {/* <div className="">{isLoggedIn && "Logged In"}</div> */}
 
       <NavbarMenu className="flex gap-11 p-16 items-center">
-        <NavbarMenuItem onClick={() => navigate('*')} className="w-full" color={"foreground"} size="lg">
+        <NavbarMenuItem onClick={() => {setIsMenuOpen(false); navigate('*')}} className="w-full cursor-pointer" color={"foreground"} size="lg">
           Profile
         </NavbarMenuItem>
-        <NavbarMenuItem onClick={() => navigate('display')} className="w-full " color={"foreground"} size="lg">
+        <NavbarMenuItem onClick={() => {setIsMenuOpen(false); navigate('display')}} className="w-full cursor-pointer" color={"foreground"} size="lg">
           Display
         </NavbarMenuItem>
         <NavbarMenuItem
